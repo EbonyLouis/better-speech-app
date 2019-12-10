@@ -11,6 +11,7 @@ const MongoClient = require('mongodb').MongoClient
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash    = require('connect-flash');
+var apikeys = require('./config/apikeys.js')
 
 var morgan       = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -32,7 +33,7 @@ var db
 mongoose.connect(configDB.url, (err, database) => {
   if (err) return console.log(err)
   db = database
-  require('./app/routes.js')(app, passport, multer, db, ObjectId);
+  require('./app/routes.js')(app, passport, multer, db, ObjectId, apikeys);
 }); // connect to our database
 
 //app.listen(port, () => {
@@ -46,7 +47,7 @@ mongoose.connect(configDB.url, (err, database) => {
     // });
 //});
 
-require('./config/passport')(passport); // pass passport for configuration
+require('./config/passport')(passport, apikeys); // pass passport for configuration
 
 // set up our express application
 app.use(morgan('dev')); // log every request to the console

@@ -7,9 +7,9 @@ var LocalStrategy   = require('passport-local').Strategy;
 var User       		= require('../app/models/user');
 
 // expose this function to our app using module.exports
-module.exports = function(passport, Nexmo) {
-  var accountSID = process.env.TWILIO_ACCOUNT_SID
-  var authToken = process.env.TWILIO_ACCOUNT_TOKEN
+module.exports = function(passport, apikeys) {
+  var accountSID = apikeys.TWILIO_ACCOUNT_SID
+  var authToken = apikeys.TWILIO_ACCOUNT_TOKEN
   var twilio = require('twilio');
   console.log('about to create client')
   var client = new twilio(accountSID, authToken);
