@@ -1,6 +1,8 @@
+const apikeys = require('./../config/apikeys.js')
+
 module.exports = function(app, passport, multer, db, ObjectId, Nexmo) {
-  var accountSID = process.env.TWILIO_ACCOUNT_SID
-  var authToken = process.env.TWILIO_ACCOUNT_TOKEN
+  var accountSID = apikeys.TWILIO_ACCOUNT_SID
+  var authToken = apikeys.TWILIO_ACCOUNT_TOKEN
   var twilio = require('twilio');
   var client = new twilio(accountSID, authToken);
 
