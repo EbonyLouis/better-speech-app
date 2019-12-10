@@ -11,7 +11,7 @@ module.exports = function(app, passport, multer, db, ObjectId, Nexmo) {
   // show the home page (will also have our login links)
   app.get('/', function(req, res) {
     console.log('i am rendering')
-    res.render('login1.ejs', {message: ""});
+    res.render('login.ejs', {message: ""});
   });
 
   app.get('/signup', function(req, res) {
@@ -22,6 +22,9 @@ module.exports = function(app, passport, multer, db, ObjectId, Nexmo) {
   });
   app.get('/parentLogin', function(req, res) {
     res.render('parentLogin.ejs', {message: ""});
+  });
+  app.get('/calendar', function(req, res) {
+    res.render('calendar.ejs', {message: ""});
   });
 
   app.get('/dashboard', function(req, res) {
